@@ -12,7 +12,7 @@ public class Flight {
 	private int year;
 	private String destination;
 	private double price;
-	private String l = "liron";
+	
 
 	public Flight(int flightId, int hour, int min, int day, int month, int year, String destination, double price) {
 		this.flightId = flightId;
