@@ -12,8 +12,7 @@ public class Flight {
 	private int year;
 	private String destination;
 	private double price;
-	
-	
+	private String l = "liron";
 
 	public Flight(int flightId, int hour, int min, int day, int month, int year, String destination, double price) {
 		this.flightId = flightId;
@@ -62,10 +61,11 @@ public class Flight {
 		return "Fligth to  " + destination + " ,the id number of the filght is " + flightId + "  " + day + "\\" + month
 				+ "\\" + year + " at hour " + hour + ":" + min + ", the price of thr flight is: " + price;
 	}
-	
+
 	public void makeADiscount() {
-		this.price = price*0.9;
+		this.price = price * 0.9;
 	}
+
 	public int getFlightId() {
 		return flightId;
 	}
@@ -93,6 +93,5 @@ public class Flight {
 	public double getPrice() {
 		return price;
 	}
-
 
 }
