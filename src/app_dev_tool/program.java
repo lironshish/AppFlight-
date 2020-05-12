@@ -1,5 +1,6 @@
 package app_dev_tool;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class program {
@@ -9,7 +10,8 @@ public class program {
 	// Tester test = new Tester();
 
 	public static void main(String[] args) {
-
+		 Tester.createHardCoded();
+		 fligthcounter = 4;
 		Scanner scan = new Scanner(System.in);
 		int choise;
 
@@ -28,8 +30,7 @@ public class program {
 				break;
 			case 2:
 				creatFligth();
-				// Tester.createHardCoded();
-				// fligthcounter = 4;
+				
 				break;
 			case 3:
 				cancleFlight();
@@ -38,13 +39,69 @@ public class program {
 				changeDestanation();
 			case 5:
 				couponCode();
+			case 6 :
+			searchByDate();
 			}
+		
 		} while (choise != 0);
+	}
+	public static int checkDay(int day) {
+		if (day < 0 || day > 31) {
+			return day;
+		}
+		return 0;
+	}
+
+	public static int checkMonth(int month) {
+		if (month < 0 || month > 12) {
+			return month;
+		}
+		return 0;
+	}
+
+	public static int checkYear(int year) {
+		if (year < 0 || year > 2020) {
+			return year;
+		}
+		return 0;
+	}
+	@SuppressWarnings("deprecation")
+	public static void searchByDate() {
+		Scanner scan = new Scanner(System.in);
+		int day,month,year;
+		do {
+			System.out.println("Enter the begin Date - day in month");
+			day = scan.nextInt();
+			System.out.println("Enter the begin Date month");
+			month = scan.nextInt();
+			System.out.println("Enter the begin Date year");
+			year = scan.nextInt();
+		}while(checkDay(day)!=0&&checkMonth(month)!=0&&checkYear(year)!=0);
+		Date beg = new Date(year,month,day);
+		do {
+			System.out.println("Enter the end Date - day in month");
+			day = scan.nextInt();
+			System.out.println("Enter the end Date month");
+			month = scan.nextInt();
+			System.out.println("Enter the end Date year");
+			year = scan.nextInt();
+		}while(checkDay(day)!=0&&checkMonth(month)!=0&&checkYear(year)!=0);
+		Date end = new Date(year,month,year);
+		for (int i = 0; i < fligthcounter; i++) {
+			if(flight[i].getYear()>beg.getYear()&&flight[i].getYear()<end.getYear()) {
+				if(flight[i].getMonth()>beg.getMonth()&&flight[i].getMonth()<end.getMonth()) {
+					if(flight[i].getDay()>beg.getDay()&&flight[i].getDay()<end.getDay()) {
+						System.out.println(flight[i]);
+					}
+				}
+			}
+		}
+
 	}
 
 	private static void couponCode() {
 		Scanner scan = new Scanner(System.in);
-		int counter=0;
+		int counter = 0;
 		int[] couponsCode = { 123, 124, 105 };
 		int answer, temp = -1;
 		// boolean code;
@@ -64,17 +121,17 @@ public class program {
 							flight[i].makeADiscount();
 							System.out.println(
 									"you get the discount, now your payment bill stant on " + flight[i].getPrice());
-						}else {
+						} else {
 							counter++;
 						}
-					}if(counter==3) {
+					}
+					if (counter == 3) {
 						System.out.println("we sorry, the coupon code dont exists");
 					}
 
-				}else
-			{
-				System.out.println("the flight dont exists");
-			}
+				} else {
+					System.out.println("the flight dont exists");
+				}
 			}
 
 		}
