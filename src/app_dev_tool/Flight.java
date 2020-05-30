@@ -4,93 +4,141 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Flight {
-	private int flightId;
-	private int hour;
-	private int min;
-	private int day;
-	private int month;
-	private int year;
-	private String destination;
-	private double price;
+	protected String city;
+	protected String company;
+	protected String flightNum;
 
-	public Flight(int flightId, int hour, int min, int day, int month, int year, String destination, double price) {
-		this.flightId = flightId;
-		this.hour = hour;
-		this.min = (min);
-		this.day = (day);
-		this.month = (month);
-		this.year = (year);
-		this.destination = destination;
-		this.price = price;
-	}
+	protected int year;
+	protected int month;
+	protected int day;
+	protected int hourFly;
+	protected int minutesFly;
+	protected int terminalNum;
 
-	public Flight() {
-		this(0, 0, 0, 0, 0, 0, "", 0);
-	}
-
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
-
-	public void save(PrintWriter writer) {
-		writer.println(flightId);
-		writer.println(hour);
-		writer.println(min);
-		writer.println(day);
-		writer.println(month);
-		writer.println(year);
-		writer.println(destination);
-		writer.println(price);
-	}
-
-	public Flight(Scanner scan) {
-		flightId = scan.nextInt();
-		hour = scan.nextInt();
-		min = scan.nextInt();
-		day = scan.nextInt();
-		month = scan.nextInt();
-		year = scan.nextInt();
-		destination = scan.next();
-		price = scan.nextDouble();
+	public Flight(String city, String company, int year, int month, int day, int hourFly, int minutesFly,
+			String flightNum, int terminalNum) { // Full constructor
+		this.city = city;
+		this.company = company;
+		this.year = year;
+		this.month = month;
+		this.day = day;
+		this.hourFly = hourFly;
+		this.minutesFly = minutesFly;
+		this.flightNum = flightNum;
+		this.terminalNum = terminalNum;
 
 	}
 
-	@Override
-	public String toString() {
-		return "Fligth to  " + destination + " ,the id number of the filght is " + flightId + "  " + day + "\\" + month
-				+ "\\" + year + " at hour " + hour + ":" + min + ", the price of thr flight is: " + price;
+//Check proper
+	public static boolean setCity(String city) {
+		for (int i = 0; i < city.length(); i++) {
+			if (Character.isDigit(city.charAt(i)) == true) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		return true;
 	}
 
-	public void makeADiscount() {
-		this.price = price * 0.9;
+	public static boolean setDay(int day) {
+		if (day < 1 || day > 31) {
+			return false;
+		}
+		return true;
 	}
 
-	public int getFlightId() {
-		return flightId;
+	public static boolean setMonth(int month) {
+		if (month < 1 || month > 12) {
+			return false;
+		}
+		return true;
 	}
 
-	public int getHour() {
-		return hour;
+	public static boolean setYear(int year) {
+		if (year < 1 || year > 2020) {
+			return false;
+		}
+		return true;
 	}
 
-	public int getMin() {
-		return min;
+	public static boolean setHourFly(int hourFly) {
+		if (hourFly < 0 || hourFly > 24) {
+			return false;
+		}
+		return true;
 	}
 
-	public int getDay() {
-		return day;
+	public static boolean setMinutesFly(int minutesFly) {
+		if (minutesFly < 0 || minutesFly > 60) {
+			return false;
+		}
+		return true;
 	}
 
-	public int getMonth() {
-		return month;
+	public static boolean setTerminalNum(int terminalNum) {
+		if (terminalNum < 0) {
+			return false;
+		}
+		return true;
 	}
 
 	public int getYear() {
 		return year;
 	}
 
-	public double getPrice() {
-		return price;
+	public int getMonth() {
+		return month;
+	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public int getHourFly() {
+		return hourFly;
+	}
+
+	public int getMinutesFly() {
+		return minutesFly;
+	}
+
+	public int getTerminalNum() {
+		return terminalNum;
+	}
+
+	// Save flight information to file
+	public void save(PrintWriter writer) {
+		writer.println(city);
+		writer.println(company);
+		writer.println(year);
+		writer.println(month);
+		writer.println(day);
+		writer.println(hourFly);
+		writer.println(minutesFly);
+		writer.println(flightNum);
+		writer.println(terminalNum);
+	}
+
+	// Loading flight information from a file
+	public Flight(Scanner scan) {
+		city = scan.next();
+		company = scan.next();
+		year = scan.nextInt();
+		month = scan.nextInt();
+		day = scan.nextInt();
+		minutesFly = scan.nextInt();
+		hourFly = scan.nextInt();
+		flightNum = scan.next();
+		terminalNum = scan.nextInt();
+
+	}
+
+	@Override
+	public String toString() {
+		return "Company: " + company + ". Destination: " + city + ". Date: " + day + "/" + month + "/" + year
+				+ ". Departure time: " + hourFly + ":" + minutesFly + ". Flight Number: " + flightNum + ". Terminal "
+				+ terminalNum;
 	}
 
 }
