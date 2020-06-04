@@ -6,6 +6,7 @@ public class Progrem {
 
 	public static void main(String[] args) {
 		int choise;
+		FlightSystem useFlifhtSystem = new FlightSystem();
 		Scanner scan = new Scanner(System.in);
 		FlightSystem.createHardCoded();
 		do {
@@ -15,11 +16,11 @@ public class Progrem {
 			choise = scan.nextInt();
 			switch (choise) {
 			case 1:
-				FlightSystem.sortOutFlightByDateAndTime();
+				FlightSystem.sortOutFlightByDateAndTime(useFlifhtSystem.allOutFlights);
 				System.out.println(FlightSystem.ShowAllOutFlight());
 				break;
 			case 2:
-				FlightSystem.sortInFlightsByDateAndTime();
+				FlightSystem.sortInFlightsByDateAndTime(useFlifhtSystem.allInFlights);
 				System.out.println(FlightSystem.ShowAllInFlight());
 				break;
 			case 3:
@@ -27,6 +28,10 @@ public class Progrem {
 				break;
 			case 4:
 				FlightSystem.CreateNewOutFlight();
+				break;
+			case 5:
+				break;
+			case 6:
 				break;
 			}
 		} while (choise != 0);

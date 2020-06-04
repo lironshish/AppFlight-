@@ -176,7 +176,7 @@ public class FlightSystem {
 	}
 
 // sort in flights 
-	public static void sortInFlightsByDateAndTime() {
+	public static void sortInFlightsByDateAndTime(List<InFlight> allInFlights) {
 		for (int i = allInFlights.size() - 1; i > 0; i--) {
 			for (int j = 0; j < i; j++) {
 				if (allInFlights.get(j).getYear() > allInFlights.get(j + 1).getYear()) {
@@ -206,7 +206,7 @@ public class FlightSystem {
 	}
 
 //sort out flights 
-	public static void sortOutFlightByDateAndTime() {
+	public static void sortOutFlightByDateAndTime(List<OutFlight> allOutFlights) {
 		for (int i = allOutFlights.size() - 1; i > 0; i--) {
 			for (int j = 0; j < i; j++) {
 				if (allOutFlights.get(j).getYear() > allOutFlights.get(j + 1).getYear()) {

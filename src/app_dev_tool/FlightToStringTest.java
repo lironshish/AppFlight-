@@ -1,9 +1,7 @@
 package app_dev_tool;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 
 public class FlightToStringTest {
@@ -56,7 +54,7 @@ public class FlightToStringTest {
 		expectedResult.append("]");
 	}
 
-	// Test 3
+// Test 3
 	@Test
 	public void toStringArrayListOutFlightTest() {
 		ArrayList<OutFlight> flightsForTest = new ArrayList<>();
