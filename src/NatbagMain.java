@@ -24,6 +24,5 @@ public class NatbagMain {
 			System.out.println("<br>");
 		}
 	}
-//
 
 }
