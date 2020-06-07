@@ -139,6 +139,7 @@ public class Flight {
 		terminalNum = scan.nextInt();
 
 	}
+	
 	@Override
 	public String toString() {
 		return "Company: " + company + ". Destination: " + city + ". Date: " + day + "/" + month + "/" + year
