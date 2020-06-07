@@ -296,7 +296,7 @@ public class FlightSystem {
 			System.out.println("the parameter that you wanted to search does not exist");
 		}
 	}
-
+//
 	public static void searchByFlightNumber(String flightNumber) {
 		int count = 0;
 		for (int i = 0; i < allInFlights.size(); i++) {
