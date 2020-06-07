@@ -30,7 +30,7 @@ public class Flight {
 
 	}
 
-//Check proper
+// Check proper
 	public static boolean setCity(String city) {
 		for (int i = 0; i < city.length(); i++) {
 			if (Character.isDigit(city.charAt(i)) == true) {
@@ -113,7 +113,7 @@ public class Flight {
 		return city;
 	}
 
-	// Save flight information to file
+// Save flight information to file
 	public void save(PrintWriter writer) {
 		writer.println(city);
 		writer.println(company);
@@ -126,7 +126,7 @@ public class Flight {
 		writer.println(terminalNum);
 	}
 
-	// Loading flight information from a file
+// Loading flight information from a file
 	public Flight(Scanner scan) {
 		city = scan.next();
 		company = scan.next();
