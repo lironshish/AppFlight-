@@ -82,7 +82,6 @@ public class Flight {
 		}
 		return true;
 	}
-
 	public int getYear() {
 		return year;
 	}
@@ -105,6 +104,12 @@ public class Flight {
 
 	public int getTerminalNum() {
 		return terminalNum;
+	}
+	public String getFlightNum() {
+		return flightNum;
+	}
+	public String getDes() {
+		return city;
 	}
 
 	// Save flight information to file
