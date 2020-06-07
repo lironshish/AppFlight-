@@ -2,7 +2,7 @@ package app_dev_tool;
 
 import java.util.Scanner;
 
-public class Progrem {
+public class Program {
 
 	public static void main(String[] args) {
 		int choise;
@@ -12,7 +12,6 @@ public class Progrem {
 		do {
 			System.out.println(
 					"Welcome to the menu!\nTo show all out flights - 1\nTo show all in flights - 2\nCreate a new in flight - 3\nCreate a new out flight - 4\nTo save flight information to file - 5\nTo Loading flight information from a file-6\nSearch flight -7\n");
-
 			choise = scan.nextInt();
 			switch (choise) {
 			case 1:

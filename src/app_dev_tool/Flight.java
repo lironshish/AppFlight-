@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Flight {
-	//
+	
 	protected String city;
 	protected String company;
 	protected String flightNum;
