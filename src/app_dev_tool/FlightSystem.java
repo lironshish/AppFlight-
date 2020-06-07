@@ -5,8 +5,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-//
-
 public class FlightSystem {
 	static Scanner scan = new Scanner(System.in);
 	static List<OutFlight> allOutFlights = new ArrayList<OutFlight>();
