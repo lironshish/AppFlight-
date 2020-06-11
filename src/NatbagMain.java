@@ -23,6 +23,6 @@ public class NatbagMain {
 		if (isHtml) {
 			System.out.println("<br>");
 		}
-	}
+	}//
 
 }
