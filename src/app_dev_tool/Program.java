@@ -1,10 +1,12 @@
 package app_dev_tool;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Program {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		int choise;
 		FlightSystem useFlifhtSystem = new FlightSystem();
 		Scanner scan = new Scanner(System.in);
@@ -30,16 +32,33 @@ public class Program {
 				FlightSystem.CreateNewOutFlight();
 				break;
 			case 5:
-				// Save flight information to file
-				break;
+				  String path1="C:\\flight.txt";      
+				  FlightSystem.save(path1);
+				  break;  
 			case 6:
+				String path="C:\\flight.txt";
+				File f = new File(path);
+				Scanner s = new Scanner(f);
+				String kind;
+				int x = 2;
+				do{
+					
+					kind=s.nextLine();
+				
+				if(kind.equals("InFlight")) {
+				FlightSystem.readFromFileInFlight(path,s);
+				x--;
+				}else {
+					FlightSystem.readFromFileOutFlight(path,s);
+					x--;
+				}     
+				}while(x!=0);
 				// Loading flight information from a file
 				break;
 			case 7:
-				System.out.println(
-						"choose the paramter which you like to search by\nterminal number - 1\nflight number - 2\ndestenation - 3\ndate range - 4");
+				System.out.println("choose the paramter which you like to search by\nterminal number - 1\nflight number - 2\ndestenation - 3\ndate range - 4");
 				int serachChoose = scan.nextInt();
-				switch (serachChoose) {
+				switch(serachChoose) {
 				case 1:
 					System.out.println("please enter the terminal number that you like to search");
 					int terminalNumber = scan.nextInt();

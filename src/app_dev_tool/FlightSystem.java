@@ -1,11 +1,18 @@
 package app_dev_tool;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+//
+
 public class FlightSystem {
+	
+	
 	static Scanner scan = new Scanner(System.in);
 	static List<OutFlight> allOutFlights = new ArrayList<OutFlight>();
 	static List<InFlight> allInFlights = new ArrayList<InFlight>();
@@ -203,7 +210,7 @@ public class FlightSystem {
 		listOfFlights.set(j, temp);
 	}
 
-// sort out flights 
+//sort out flights 
 	public static void sortOutFlightByDateAndTime(List<OutFlight> allOutFlights) {
 		for (int i = allOutFlights.size() - 1; i > 0; i--) {
 			for (int j = 0; j < i; j++) {
@@ -251,11 +258,11 @@ public class FlightSystem {
 				System.out.println(allInFlights.get(i));
 			}
 			if (allInFlights.get(i).getYear() == begYear) {
-				if (allInFlights.get(i).getMonth() > begMonth && allInFlights.get(i).getMonth() < endMonth) {
+				if(allInFlights.get(i).getMonth() > begMonth&&allInFlights.get(i).getMonth() < endMonth) {
 					System.out.println(allInFlights.get(i));
 				}
-				if (allInFlights.get(i).getMonth() == begMonth) {
-					if (allInFlights.get(i).getDay() > begDay && allInFlights.get(i).getDay() < endDay) {
+				if(allInFlights.get(i).getMonth() == begMonth) {
+					if(allInFlights.get(i).getDay() > begDay&&allInFlights.get(i).getDay() < endDay) {
 						System.out.println(allInFlights.get(i));
 					}
 				}
@@ -266,18 +273,17 @@ public class FlightSystem {
 				System.out.println(allOutFlights.get(i));
 			}
 			if (allOutFlights.get(i).getYear() == begYear) {
-				if (allOutFlights.get(i).getMonth() > begMonth && allOutFlights.get(i).getMonth() < endMonth) {
+				if(allOutFlights.get(i).getMonth() > begMonth&&allOutFlights.get(i).getMonth() < endMonth) {
 					System.out.println(allOutFlights.get(i));
 				}
-				if (allOutFlights.get(i).getMonth() == begMonth) {
-					if (allOutFlights.get(i).getDay() > begDay && allOutFlights.get(i).getDay() < endDay) {
+				if(allOutFlights.get(i).getMonth() == begMonth) {
+					if(allOutFlights.get(i).getDay() > begDay&&allOutFlights.get(i).getDay() < endDay) {
 						System.out.println(allOutFlights.get(i));
 					}
 				}
 			}
 		}
 	}
-
 	public static void searchByDes(String des) {
 		int count = 0;
 		for (int i = 0; i < allInFlights.size(); i++) {
@@ -293,7 +299,7 @@ public class FlightSystem {
 			}
 		}
 		if (count == 0) {
-			System.out.println("the parameter that you wanted to search does not exist");
+			System.out.println("the parameter that you wanted to search does not exist\n");
 		}
 	}
 
@@ -312,7 +318,7 @@ public class FlightSystem {
 			}
 		}
 		if (count == 0) {
-			System.out.println("the parameter that you wanted to search does not exist");
+			System.out.println("the parameter that you wanted to search does not exist\n");
 		}
 	}
 
@@ -331,8 +337,48 @@ public class FlightSystem {
 			}
 		}
 		if (count == 0) {
-			System.out.println("the parameter that you wanted to search does not exist");
+			System.out.println("the parameter that you wanted to search does not exist\n");
 		}
 	}
+public static void readFromFileInFlight(String path,Scanner s) throws FileNotFoundException {
+		int numOfFligth;
+		numOfFligth=s.nextInt();
+		s.nextLine();
+		for (int i = 0; i <numOfFligth ; i++) {
+			InFlight temp=new InFlight(path,s);
+			allInFlights.add(temp);
+			s.nextLine();
+		}
+	}
+
+public static void readFromFileOutFlight(String path,Scanner s) throws FileNotFoundException {
+	int numOfFligth;
+	numOfFligth=s.nextInt();
+	s.nextLine();
+	for (int i = 0; i <numOfFligth ; i++) {
+		
+		OutFlight temp=new OutFlight(path,s);
+		allOutFlights.add(temp);
+		s.nextLine();
+	}
 	
+}
+//
+public static void save(String path1) throws FileNotFoundException {
+	File f = new File(path1);
+	PrintWriter pw = new PrintWriter(f);
+	pw.println("InFlight");
+	pw.println(allInFlights.size());
+	for (int i = 0; i < allInFlights.size(); i++) {
+		allInFlights.get(i).save(pw);
+	}
+//	pw.println();
+	pw.println("OutFlights");
+	pw.println(allOutFlights.size());
+	for (int i = 0; i < allOutFlights.size(); i++) {
+		allOutFlights.get(i).save(pw);
+		
+	}
+	pw.close();
+}
 }

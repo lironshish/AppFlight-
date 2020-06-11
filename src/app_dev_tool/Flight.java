@@ -1,10 +1,10 @@
 package app_dev_tool;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Flight {
-	//
 	protected String city;
 	protected String company;
 	protected String flightNum;
@@ -15,7 +15,10 @@ public class Flight {
 	protected int hourFly;
 	protected int minutesFly;
 	protected int terminalNum;
-
+	
+	
+	
+	
 	public Flight(String city, String company, int year, int month, int day, int hourFly, int minutesFly,
 			String flightNum, int terminalNum) { // Full constructor
 		this.city = city;
@@ -29,8 +32,8 @@ public class Flight {
 		this.terminalNum = terminalNum;
 
 	}
-
-// Check proper
+//
+//Check proper
 	public static boolean setCity(String city) {
 		for (int i = 0; i < city.length(); i++) {
 			if (Character.isDigit(city.charAt(i)) == true) {
@@ -83,6 +86,7 @@ public class Flight {
 		}
 		return true;
 	}
+//
 	public int getYear() {
 		return year;
 	}
@@ -112,8 +116,7 @@ public class Flight {
 	public String getDes() {
 		return city;
 	}
-
-// Save flight information to file
+	// Save flight information to file
 	public void save(PrintWriter writer) {
 		writer.println(city);
 		writer.println(company);
@@ -126,20 +129,28 @@ public class Flight {
 		writer.println(terminalNum);
 	}
 
-// Loading flight information from a file
-	public Flight(Scanner scan) {
-		city = scan.next();
-		company = scan.next();
-		year = scan.nextInt();
-		month = scan.nextInt();
-		day = scan.nextInt();
-		minutesFly = scan.nextInt();
-		hourFly = scan.nextInt();
-		flightNum = scan.next();
-		terminalNum = scan.nextInt();
-
-	}
+	// Loading flight information from a file
+	public Flight(String path,Scanner s) {
 	
+		
+		city = s.nextLine();
+		company = s.nextLine();
+		year = s.nextInt();
+		s.nextLine();
+		month = s.nextInt();
+		s.nextLine();
+		day = s.nextInt();
+		s.nextLine();
+		minutesFly = s.nextInt();
+		s.nextLine();
+		hourFly = s.nextInt();
+		s.nextLine();
+		flightNum = s.next();
+		s.nextLine();
+		terminalNum = s.nextInt();
+		//s.nextLine();
+	}
+
 	@Override
 	public String toString() {
 		return "Company: " + company + ". Destination: " + city + ". Date: " + day + "/" + month + "/" + year
