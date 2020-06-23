@@ -32,7 +32,7 @@ public class Flight {
 		this.terminalNum = terminalNum;
 
 	}
-
+//
 //Check proper
 	public static boolean setCity(String city) {
 		for (int i = 0; i < city.length(); i++) {
