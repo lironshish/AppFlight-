@@ -11,7 +11,7 @@ public class InFlight extends Flight {
 		super(city, company, year, month, day, hourFly, minutesFly, flightNum, terminalNum);
 
 	}
-	//
+	
 	public InFlight(String path,Scanner s) {
 		super(path, s);
 
