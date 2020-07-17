@@ -17,7 +17,7 @@ public class InFlight extends Flight {
 
 	}
 	
-	
+	//
 
 	@Override
 	public String toString() {
