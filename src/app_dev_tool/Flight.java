@@ -128,6 +128,18 @@ public class Flight {
 		return city;
 	}
 
+	public int getYearReturn() {
+		return yearReturn;
+	}
+
+	public int getMonthReturn() {
+		return monthReturn;
+	}
+
+	public int getDayReturn() {
+		return dayReturn;
+	}
+
 	// Save flight information to file
 	public void save(PrintWriter writer) {
 		writer.println(city);
