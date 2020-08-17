@@ -1,13 +1,15 @@
 package app_dev_tool;
 
-import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.time.LocalDate;
 
 public class Flight {
+
 	protected String city;
 	protected String company;
 	protected String flightNum;
+	protected String Country;
 
 	protected int year;
 	protected int month;
@@ -15,12 +17,13 @@ public class Flight {
 	protected int hourFly;
 	protected int minutesFly;
 	protected int terminalNum;
-	
-	
-	
-	
+	protected int daysOfVacation;
+	protected int yearReturn;
+	protected int monthReturn;
+	protected int dayReturn;
+
 	public Flight(String city, String company, int year, int month, int day, int hourFly, int minutesFly,
-			String flightNum, int terminalNum) { // Full constructor
+			String flightNum, int terminalNum, String Country, int daysOfVacation) { // Full constructor
 		this.city = city;
 		this.company = company;
 		this.year = year;
@@ -30,9 +33,15 @@ public class Flight {
 		this.minutesFly = minutesFly;
 		this.flightNum = flightNum;
 		this.terminalNum = terminalNum;
+		this.Country = Country;
+		this.daysOfVacation = daysOfVacation;
+		LocalDate d = LocalDate.of(year, month, day).plusDays(daysOfVacation);
+		this.yearReturn = d.getYear();
+		this.monthReturn = d.getMonthValue();
+		this.dayReturn = d.getDayOfMonth();
 
 	}
-//
+
 //Check proper
 	public static boolean setCity(String city) {
 		for (int i = 0; i < city.length(); i++) {
@@ -86,7 +95,7 @@ public class Flight {
 		}
 		return true;
 	}
-//
+
 	public int getYear() {
 		return year;
 	}
@@ -110,12 +119,15 @@ public class Flight {
 	public int getTerminalNum() {
 		return terminalNum;
 	}
+
 	public String getFlightNum() {
 		return flightNum;
 	}
+
 	public String getDes() {
 		return city;
 	}
+
 	// Save flight information to file
 	public void save(PrintWriter writer) {
 		writer.println(city);
@@ -127,12 +139,13 @@ public class Flight {
 		writer.println(minutesFly);
 		writer.println(flightNum);
 		writer.println(terminalNum);
+		writer.println(Country);
+		writer.println(daysOfVacation);
 	}
 
 	// Loading flight information from a file
-	public Flight(String path,Scanner s) {
-	
-		
+	public Flight(String path, Scanner s) {
+
 		city = s.nextLine();
 		company = s.nextLine();
 		year = s.nextInt();
@@ -148,14 +161,19 @@ public class Flight {
 		flightNum = s.next();
 		s.nextLine();
 		terminalNum = s.nextInt();
-		//s.nextLine();
+		s.nextLine();
+		Country = s.next();
+		s.nextLine();
+		daysOfVacation = s.nextInt();
 	}
 
 	@Override
 	public String toString() {
 		return "Company: " + company + ". Destination: " + city + ". Date: " + day + "/" + month + "/" + year
-				+ ". Departure time: " + hourFly + ":" + minutesFly + ". Flight Number: " + flightNum + ". Terminal "
-				+ terminalNum;
+				+ ". Departure time: " + hourFly + ":" + minutesFly + ". Flight Number: " + flightNum + "\n "
+				+ ". Terminal " + terminalNum + " the vacation will take place in " + Country + " and will be for "
+				+ daysOfVacation + " days , which make the " + "returning date to be" + dayReturn + "/" + monthReturn
+				+ "/" + yearReturn;
 	}
 
 }

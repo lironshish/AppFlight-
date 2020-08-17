@@ -1,6 +1,5 @@
 package app_dev_tool;
 
-
 public class NatbagMain {
 
 	public static void main(String[] args) {
@@ -25,6 +24,6 @@ public class NatbagMain {
 		if (isHtml) {
 			System.out.println("<br>");
 		}
-	}//
+	}
 
 }

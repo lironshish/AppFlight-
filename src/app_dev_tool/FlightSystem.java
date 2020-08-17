@@ -8,21 +8,17 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-//
-
 public class FlightSystem {
-	
-	
+
 	static Scanner scan = new Scanner(System.in);
 	static List<OutFlight> allOutFlights = new ArrayList<OutFlight>();
 	static List<InFlight> allInFlights = new ArrayList<InFlight>();
 
 	public static void createHardCoded() {
-		OutFlight outFlight1 = new OutFlight("London", "el al", 2020, 5, 20, 10, 10, "LY315", 3);
-		OutFlight outFlight2 = new OutFlight("New York", "el al", 2020, 5, 20, 00, 45, "LY3001", 3);
-
-		InFlight inFlight1 = new InFlight("Brezil", "el al", 2020, 7, 15, 10, 15, "LY415", 1);
-		InFlight inFlight2 = new InFlight("China", "el al", 2020, 4, 12, 12, 00, "LY317", 3);
+		OutFlight outFlight1 = new OutFlight("London", "el al", 2020, 5, 20, 10, 10, "LY315", 3, "England", 22);
+		OutFlight outFlight2 = new OutFlight("New York", "el al", 2020, 5, 20, 00, 45, "LY3001", 3, "USA", 15);
+		InFlight inFlight1 = new InFlight("rio de jeneiro", "el al", 2020, 7, 15, 10, 15, "LY415", 1, "Brazil", 9);
+		InFlight inFlight2 = new InFlight("shengai", "el al", 2020, 4, 12, 12, 00, "LY317", 3, "China", 11);
 
 		allOutFlights.add(outFlight1);
 		allOutFlights.add(outFlight2);
@@ -83,8 +79,8 @@ public class FlightSystem {
 	}
 
 	public static void CreateNewOutFlight() {
-		String landingCity = "", company = "", flightNumber = "";
-		int year, hour, month, day, minutes, terminalNum;
+		String landingCity = "", company = "", flightNumber = "", country = "";
+		int year, hour, month, day, minutes, terminalNum, vacationLength;
 		do {
 			System.out.println("Hello,Plesae enter Landing City");
 			landingCity = ReadString();
@@ -115,14 +111,18 @@ public class FlightSystem {
 		flightNumber = scan.next();
 		System.out.println("please enter the terminal number");
 		terminalNum = ReadInt();
+		System.out.println("enter the country name");
+		country = ReadString();
+		System.out.println("please enter how many days the vacation will be");
+		vacationLength = ReadInt();
 		OutFlight outFlight = new OutFlight(landingCity, company, year, month, day, hour, minutes, flightNumber,
-				terminalNum);
+				terminalNum, country, vacationLength);
 		allOutFlights.add(outFlight);
 	}
 
 	public static void CreateNewInFlight() {
-		String takeOffCity = "", company = "", flightNumber = "";
-		int year, hour, month, day, minutes, terminalNum;
+		String takeOffCity = "", company = "", flightNumber = "", country = "";
+		int year, hour, month, day, minutes, terminalNum, vacationLength;
 		do {
 			System.out.println("Please enter the city that will take off");
 			takeOffCity = ReadString();
@@ -153,8 +153,12 @@ public class FlightSystem {
 		flightNumber = scan.next();
 		System.out.println("please enter the terminal number");
 		terminalNum = ReadInt();
+		System.out.println("please enter the country");
+		country = ReadString();
+		System.out.println("enter the vacation length");
+		vacationLength = ReadInt();
 		InFlight outFlight = new InFlight(takeOffCity, company, year, month, day, hour, minutes, flightNumber,
-				terminalNum);
+				terminalNum, country, vacationLength);
 		allInFlights.add(outFlight);
 
 	}
@@ -258,11 +262,11 @@ public class FlightSystem {
 				System.out.println(allInFlights.get(i));
 			}
 			if (allInFlights.get(i).getYear() == begYear) {
-				if(allInFlights.get(i).getMonth() > begMonth&&allInFlights.get(i).getMonth() < endMonth) {
+				if (allInFlights.get(i).getMonth() > begMonth && allInFlights.get(i).getMonth() < endMonth) {
 					System.out.println(allInFlights.get(i));
 				}
-				if(allInFlights.get(i).getMonth() == begMonth) {
-					if(allInFlights.get(i).getDay() > begDay&&allInFlights.get(i).getDay() < endDay) {
+				if (allInFlights.get(i).getMonth() == begMonth) {
+					if (allInFlights.get(i).getDay() > begDay && allInFlights.get(i).getDay() < endDay) {
 						System.out.println(allInFlights.get(i));
 					}
 				}
@@ -273,17 +277,18 @@ public class FlightSystem {
 				System.out.println(allOutFlights.get(i));
 			}
 			if (allOutFlights.get(i).getYear() == begYear) {
-				if(allOutFlights.get(i).getMonth() > begMonth&&allOutFlights.get(i).getMonth() < endMonth) {
+				if (allOutFlights.get(i).getMonth() > begMonth && allOutFlights.get(i).getMonth() < endMonth) {
 					System.out.println(allOutFlights.get(i));
 				}
-				if(allOutFlights.get(i).getMonth() == begMonth) {
-					if(allOutFlights.get(i).getDay() > begDay&&allOutFlights.get(i).getDay() < endDay) {
+				if (allOutFlights.get(i).getMonth() == begMonth) {
+					if (allOutFlights.get(i).getDay() > begDay && allOutFlights.get(i).getDay() < endDay) {
 						System.out.println(allOutFlights.get(i));
 					}
 				}
 			}
 		}
 	}
+
 	public static void searchByDes(String des) {
 		int count = 0;
 		for (int i = 0; i < allInFlights.size(); i++) {
@@ -340,45 +345,45 @@ public class FlightSystem {
 			System.out.println("the parameter that you wanted to search does not exist\n");
 		}
 	}
-public static void readFromFileInFlight(String path,Scanner s) throws FileNotFoundException {
+
+	public static void readFromFileInFlight(String path, Scanner s) throws FileNotFoundException {
 		int numOfFligth;
-		numOfFligth=s.nextInt();
+		numOfFligth = s.nextInt();
 		s.nextLine();
-		for (int i = 0; i <numOfFligth ; i++) {
-			InFlight temp=new InFlight(path,s);
+		for (int i = 0; i < numOfFligth; i++) {
+			InFlight temp = new InFlight(path, s);
 			allInFlights.add(temp);
 			s.nextLine();
 		}
 	}
 
-public static void readFromFileOutFlight(String path,Scanner s) throws FileNotFoundException {
-	int numOfFligth;
-	numOfFligth=s.nextInt();
-	s.nextLine();
-	for (int i = 0; i <numOfFligth ; i++) {
-		
-		OutFlight temp=new OutFlight(path,s);
-		allOutFlights.add(temp);
+	public static void readFromFileOutFlight(String path, Scanner s) throws FileNotFoundException {
+		int numOfFligth;
+		numOfFligth = s.nextInt();
 		s.nextLine();
+		for (int i = 0; i < numOfFligth; i++) {
+
+			OutFlight temp = new OutFlight(path, s);
+			allOutFlights.add(temp);
+			s.nextLine();
+		}
+
 	}
-	
-}
-//
-public static void save(String path1) throws FileNotFoundException {
-	File f = new File(path1);
-	PrintWriter pw = new PrintWriter(f);
-	pw.println("InFlight");
-	pw.println(allInFlights.size());
-	for (int i = 0; i < allInFlights.size(); i++) {
-		allInFlights.get(i).save(pw);
+
+	public static void save(String path1) throws FileNotFoundException {
+		File f = new File(path1);
+		PrintWriter pw = new PrintWriter(f);
+		pw.println("InFlight");
+		pw.println(allInFlights.size());
+		for (int i = 0; i < allInFlights.size(); i++) {
+			allInFlights.get(i).save(pw);
+		}
+		pw.println("OutFlights");
+		pw.println(allOutFlights.size());
+		for (int i = 0; i < allOutFlights.size(); i++) {
+			allOutFlights.get(i).save(pw);
+
+		}
+		pw.close();
 	}
-//	pw.println();
-	pw.println("OutFlights");
-	pw.println(allOutFlights.size());
-	for (int i = 0; i < allOutFlights.size(); i++) {
-		allOutFlights.get(i).save(pw);
-		
-	}
-	pw.close();
-}
 }
