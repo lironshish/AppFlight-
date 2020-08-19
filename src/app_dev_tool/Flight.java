@@ -140,6 +140,17 @@ public class Flight {
 		return dayReturn;
 	}
 
+	public String getCompany() {
+		return company;
+	}
+
+	public String getCountry() {
+		return Country;
+	}
+
+	public String getCity() {
+		return city;
+	}
 	// Save flight information to file
 	public void save(PrintWriter writer) {
 		writer.println(city);

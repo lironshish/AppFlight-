@@ -289,23 +289,124 @@ public class FlightSystem {
 		}
 	}
 
-	public static void searchByDes(String des) {
+	public static String searchFlightByDate(int choose, int temp) {
+		String allFlightsInDate = " ";
+		if (choose == 1) {
+			for (int i = 0; i < allInFlights.size(); i++) {
+				if (allInFlights.get(i).getYear() == temp) {
+					allFlightsInDate += allInFlights.get(i) + "\n";
+				}
+			}
+			for (int j = 0; j < allOutFlights.size(); j++) {
+				if (allOutFlights.get(j).getYear() == temp) {
+					allFlightsInDate += allOutFlights.get(j) + "\n";
+				}
+			}
+			return allFlightsInDate;
+		} else if (choose == 2) {
+			for (int i = 0; i < allInFlights.size(); i++) {
+				if (allInFlights.get(i).getMonth() == temp) {
+					allFlightsInDate += allInFlights.get(i) + "\n";
+				}
+			}
+			for (int j = 0; j < allOutFlights.size(); j++) {
+				if (allOutFlights.get(j).getMonth() == temp) {
+					allFlightsInDate += allOutFlights.get(j) + "\n";
+				}
+			}
+
+			return allFlightsInDate;
+		}
+
+		else if (choose == 3) {
+			for (
+
+					int i = 0; i < allInFlights.size(); i++) {
+				if (allInFlights.get(i).getDay() == temp) {
+					allFlightsInDate += allInFlights.get(i) + "\n";
+				}
+			}
+			for (int j = 0; j < allOutFlights.size(); j++) {
+				if (allOutFlights.get(j).getDay() == temp) {
+					allFlightsInDate += allOutFlights.get(j) + "\n";
+				}
+			}
+
+			return allFlightsInDate;
+		} else
+			return allFlightsInDate;
+	}
+
+	public static String searchByCompany(String comp) {
 		int count = 0;
+		String searchEnd = "";
 		for (int i = 0; i < allInFlights.size(); i++) {
-			if (allInFlights.get(i).getDes().equalsIgnoreCase(des)) {
+			if (allInFlights.get(i).getCompany().equalsIgnoreCase(comp)) {
 				System.out.println(allInFlights.get(i));
 				count++;
+				searchEnd += allInFlights.get(i) + "\n";
 			}
 		}
 		for (int i = 0; i < allOutFlights.size(); i++) {
-			if (allOutFlights.get(i).getDes().equalsIgnoreCase(des)) {
+			if (allOutFlights.get(i).getCompany().equalsIgnoreCase(comp)) {
 				System.out.println(allOutFlights.get(i));
 				count++;
+				searchEnd += allOutFlights.get(i) + "\n";
 			}
 		}
+
 		if (count == 0) {
 			System.out.println("the parameter that you wanted to search does not exist\n");
 		}
+		return searchEnd;
+	}
+
+	public static String searchByCity(String des) {
+		int count = 0;
+		String searchEnd = "";
+		for (int i = 0; i < allInFlights.size(); i++) {
+			if (allInFlights.get(i).getCity().equalsIgnoreCase(des)) {
+				System.out.println(allInFlights.get(i));
+				count++;
+				searchEnd += allInFlights.get(i) + "\n";
+			}
+		}
+		for (int i = 0; i < allOutFlights.size(); i++) {
+			if (allOutFlights.get(i).getCity().equalsIgnoreCase(des)) {
+				System.out.println(allOutFlights.get(i));
+				count++;
+				searchEnd += allOutFlights.get(i) + "\n";
+			}
+		}
+
+		if (count == 0) {
+			System.out.println("the parameter that you wanted to search does not exist\n");
+		}
+		return searchEnd;
+	}
+
+	public static String searchByCountry(String des) {
+		int count = 0;
+		String searchEnd = "";
+		for (int i = 0; i < allInFlights.size(); i++) {
+			if (allInFlights.get(i).getCountry().equalsIgnoreCase(des)) {
+				System.out.println(allInFlights.get(i));
+				count++;
+				searchEnd += allInFlights.get(i) + "/n";
+			}
+		}
+		for (int i = 0; i < allOutFlights.size(); i++) {
+			if (allOutFlights.get(i).getCountry().equalsIgnoreCase(des)) {
+				System.out.println(allOutFlights.get(i));
+				count++;
+				searchEnd += allOutFlights.get(i) + "/n";
+			}
+		}
+
+		if (count == 0) {
+			System.out.println("the parameter that you wanted to search does not exist\n");
+		}
+		return searchEnd;
 	}
 
 	public static void searchByFlightNumber(String flightNumber) {

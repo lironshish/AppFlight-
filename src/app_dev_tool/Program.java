@@ -57,7 +57,7 @@ public class Program {
 				break;
 			case 7:
 				System.out.println(
-						"choose the paramter which you like to search by\nterminal number - 1\nflight number - 2\ndestenation - 3\ndate range - 4");
+						"choose the paramter which you like to search by\nterminal number - 1\nflight number - 2\ncity - 3\ndate -4\ncountry -5\ncompany -6");
 				int serachChoose = scan.nextInt();
 				switch (serachChoose) {
 				case 1:
@@ -71,16 +71,32 @@ public class Program {
 					FlightSystem.searchByFlightNumber(flightNumber);
 					break;
 				case 3:
-					System.out.println("plesae enter destantion to search");
-					String des = scan.next();
-					FlightSystem.searchByDes(des);
+					System.out.println("plesae enter city to search");
+					String city = scan.next();
+					FlightSystem.searchByCity(city);
 					break;
 				case 4:
-					System.out.println("enter the date range , first enter the begin date , seperate with dots (.)");
-					String begDate = scan.next();
-					System.out.println("now enter the end date , also seperate with dots (.)");
-					String endDate = scan.next();
-					FlightSystem.searchFlightByDateRange(begDate, endDate);
+					int SearchChooseDate = 0;
+					do {
+						System.out.println(
+								"choose the date paramter which you like to search by\nyear - 1\nmonth - 2\nday - 3");
+						SearchChooseDate = scan.nextInt();
+					} while (SearchChooseDate != 1 && SearchChooseDate != 2 && SearchChooseDate != 3);
+
+					System.out.println("please enter the parameter");
+					int temp = scan.nextInt();
+					String searchResult = FlightSystem.searchFlightByDate(SearchChooseDate, temp);
+					System.out.println(searchResult);
+					break;
+				case 5:
+					System.out.println("plesae enter country to search");
+					String country = scan.next();
+					FlightSystem.searchByCountry(country);
+					break;
+				case 6:
+					System.out.println("please enter the company of flights to search");
+					String company = scan.next();
+					FlightSystem.searchByCompany(company);
 				}
 			}
 		} while (choise != 0);
