@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class OutFlight extends Flight {
 	public OutFlight(String city, String company, int year, int month, int day, int hourFly, int minutesFly,
 			String flightNum, int terminalNum, String country, int daysOfVacation) {
+		// Call to constructor of Flight 
 		super(city, company, year, month, day, hourFly, minutesFly, flightNum, terminalNum, country, daysOfVacation);
 
 	}

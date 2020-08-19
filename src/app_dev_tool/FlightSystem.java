@@ -15,6 +15,7 @@ public class FlightSystem {
 	static List<InFlight> allInFlights = new ArrayList<InFlight>();
 
 	public static void createHardCoded() {
+		// Creating flights
 		OutFlight outFlight1 = new OutFlight("London", "el al", 2020, 5, 20, 10, 10, "LY315", 3, "England", 22);
 		OutFlight outFlight2 = new OutFlight("New York", "el al", 2020, 5, 20, 00, 45, "LY3001", 3, "USA", 15);
 		InFlight inFlight1 = new InFlight("rio de jeneiro", "el al", 2020, 7, 15, 10, 15, "LY415", 1, "Brazil", 9);
@@ -47,7 +48,7 @@ public class FlightSystem {
 		return number;
 	}
 
-	public static boolean isAlpha(String str) {
+	public static boolean isAlpha(String str) { // Help method
 		boolean isalpha = true;
 		char[] cha = str.toCharArray();
 		for (char i : cha) {
@@ -78,7 +79,7 @@ public class FlightSystem {
 		return str;
 	}
 
-	public static void CreateNewOutFlight() {
+	public static void CreateNewOutFlight() { // Create a new out flight
 		String landingCity = "", company = "", flightNumber = "", country = "";
 		int year, hour, month, day, minutes, terminalNum, vacationLength;
 		do {
@@ -120,7 +121,7 @@ public class FlightSystem {
 		allOutFlights.add(outFlight);
 	}
 
-	public static void CreateNewInFlight() {
+	public static void CreateNewInFlight() { // Create a new in flight
 		String takeOffCity = "", company = "", flightNumber = "", country = "";
 		int year, hour, month, day, minutes, terminalNum, vacationLength;
 		do {
@@ -163,7 +164,7 @@ public class FlightSystem {
 
 	}
 
-	public static String ShowAllInFlight() {
+	public static String ShowAllInFlight() { // Show in flights
 		String s = "The in flights are:\n";
 		for (int i = 0; i < allInFlights.size(); i++) {
 			s += allInFlights.get(i).toString();
@@ -173,7 +174,7 @@ public class FlightSystem {
 		return s;
 	}
 
-	public static String ShowAllOutFlight() {
+	public static String ShowAllOutFlight() { // Show out flights
 		String s = "The out flights are:\n";
 		for (int i = 0; i < allOutFlights.size(); i++) {
 			s += allOutFlights.get(i).toString();
@@ -245,6 +246,8 @@ public class FlightSystem {
 		listOfFlights.set(j, temp);
 	}
 
+// Searchers flight by parameters	
+
 	public static void searchFlightByDateRange(String begDate, String endDate) {
 		int begYear, begMonth, begDay, endYear, endMonth, endDay;
 		String[] beg = new String[3];
@@ -289,7 +292,7 @@ public class FlightSystem {
 		}
 	}
 
-	public static String searchFlightByDate(int choose, int temp) {
+	public static String searchFlightByDate(int choose, int temp) { // by date
 		String allFlightsInDate = " ";
 		if (choose == 1) {
 			for (int i = 0; i < allInFlights.size(); i++) {
@@ -337,7 +340,7 @@ public class FlightSystem {
 			return allFlightsInDate;
 	}
 
-	public static String searchByCompany(String comp) {
+	public static String searchByCompany(String comp) { // by company
 		int count = 0;
 		String searchEnd = "";
 		for (int i = 0; i < allInFlights.size(); i++) {
@@ -385,7 +388,7 @@ public class FlightSystem {
 		return searchEnd;
 	}
 
-	public static String searchByCountry(String des) {
+	public static String searchByCountry(String des) { // by country
 		int count = 0;
 		String searchEnd = "";
 		for (int i = 0; i < allInFlights.size(); i++) {
@@ -409,7 +412,7 @@ public class FlightSystem {
 		return searchEnd;
 	}
 
-	public static void searchByFlightNumber(String flightNumber) {
+	public static void searchByFlightNumber(String flightNumber) { // by flight number
 		int count = 0;
 		for (int i = 0; i < allInFlights.size(); i++) {
 			if (allInFlights.get(i).getFlightNum().equalsIgnoreCase(flightNumber)) {
@@ -447,6 +450,7 @@ public class FlightSystem {
 		}
 	}
 
+	// Loading in flight information from a file
 	public static void readFromFileInFlight(String path, Scanner s) throws FileNotFoundException {
 		int numOfFligth;
 		numOfFligth = s.nextInt();
@@ -458,6 +462,7 @@ public class FlightSystem {
 		}
 	}
 
+	// Loading out flight information from a file
 	public static void readFromFileOutFlight(String path, Scanner s) throws FileNotFoundException {
 		int numOfFligth;
 		numOfFligth = s.nextInt();
@@ -471,6 +476,7 @@ public class FlightSystem {
 
 	}
 
+	// Save flight information to file
 	public static void save(String path1) throws FileNotFoundException {
 		File f = new File(path1);
 		PrintWriter pw = new PrintWriter(f);

@@ -42,7 +42,7 @@ public class Flight {
 
 	}
 
-//Check proper
+// Setters and Getters 
 	public static boolean setCity(String city) {
 		for (int i = 0; i < city.length(); i++) {
 			if (Character.isDigit(city.charAt(i)) == true) {
@@ -151,6 +151,7 @@ public class Flight {
 	public String getCity() {
 		return city;
 	}
+
 	// Save flight information to file
 	public void save(PrintWriter writer) {
 		writer.println(city);
