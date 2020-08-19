@@ -248,50 +248,6 @@ public class FlightSystem {
 
 // Searchers flight by parameters	
 
-	public static void searchFlightByDateRange(String begDate, String endDate) {
-		int begYear, begMonth, begDay, endYear, endMonth, endDay;
-		String[] beg = new String[3];
-		beg = begDate.split("\\.");
-		begDay = Integer.parseInt(beg[0]);
-		begMonth = Integer.parseInt(beg[1]);
-		begYear = Integer.parseInt(beg[2]);
-		String[] end = new String[3];
-		end = endDate.split("\\.");
-		endDay = Integer.parseInt(end[0]);
-		endMonth = Integer.parseInt(end[1]);
-		endYear = Integer.parseInt(end[2]);
-		for (int i = 0; i < allInFlights.size(); i++) {
-			if ((allInFlights.get(i).getYear() > begYear) && (allInFlights.get(i).getYear() < endYear)) {
-				System.out.println(allInFlights.get(i));
-			}
-			if (allInFlights.get(i).getYear() == begYear) {
-				if (allInFlights.get(i).getMonth() > begMonth && allInFlights.get(i).getMonth() < endMonth) {
-					System.out.println(allInFlights.get(i));
-				}
-				if (allInFlights.get(i).getMonth() == begMonth) {
-					if (allInFlights.get(i).getDay() > begDay && allInFlights.get(i).getDay() < endDay) {
-						System.out.println(allInFlights.get(i));
-					}
-				}
-			}
-		}
-		for (int i = 0; i < allOutFlights.size(); i++) {
-			if ((allOutFlights.get(i).getYear() > begYear) && (allOutFlights.get(i).getYear() < endYear)) {
-				System.out.println(allOutFlights.get(i));
-			}
-			if (allOutFlights.get(i).getYear() == begYear) {
-				if (allOutFlights.get(i).getMonth() > begMonth && allOutFlights.get(i).getMonth() < endMonth) {
-					System.out.println(allOutFlights.get(i));
-				}
-				if (allOutFlights.get(i).getMonth() == begMonth) {
-					if (allOutFlights.get(i).getDay() > begDay && allOutFlights.get(i).getDay() < endDay) {
-						System.out.println(allOutFlights.get(i));
-					}
-				}
-			}
-		}
-	}
-
 	public static String searchFlightByDate(int choose, int temp) { // by date
 		String allFlightsInDate = " ";
 		if (choose == 1) {
