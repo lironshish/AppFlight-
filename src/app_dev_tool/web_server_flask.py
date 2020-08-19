@@ -3,10 +3,36 @@ import subprocess
 
 from flask import Flask, request
 
-app = Flask("my_app1")
+app = Flask("natbag2020_app")
 
-@app.route("/natbag")
-def natbag2020():
-    return subprocess.check_output(["java", "-classpath", "/home/liron/workspace/g1/bin", "NatbagMain", request.args.get('outFormat')])
+@app.route("/departures")
+def dep():
+    return subprocess.check_output(["java", "-classpath",
+                                    "/home/afeka/git/AppFlight/bin", "app_dev_tool.NatbagMain",
+                                    request.args.get('outformat'), "departures",
+                                    request.args.get('airline'), request.args.get('country'),
+                                    request.args.get('city'), request.args.get('airport'),
+                                    request.args.get('day1'), request.args.get('month1'),
+                                    request.args.get('year1'), request.args.get('day2'),
+                                    request.args.get('month2'), request.args.get('year2'),
+                                    request.args.get('sunday'), request.args.get('monday'),
+                                    request.args.get('tuesday'), request.args.get('wednesday'),
+                                    request.args.get('thursday'), request.args.get('friday'),
+                                    request.args.get('saturday')])
+
+@app.route("/arrivals")
+def arr():
+    return subprocess.check_output(["java", "-classpath",
+                                    "/home/afeka/git/AppFlight/bin", "app_dev_tool.NatbagMain",
+                                    request.args.get('outformat'), "arrivals",
+                                    request.args.get('airline'), request.args.get('country'),
+                                    request.args.get('city'), request.args.get('airport'),
+                                    request.args.get('day1'), request.args.get('month1'),
+                                    request.args.get('year1'), request.args.get('day2'),
+                                    request.args.get('month2'), request.args.get('year2'),
+                                    request.args.get('sunday'), request.args.get('monday'),
+                                    request.args.get('tuesday'), request.args.get('wednesday'),
+                                    request.args.get('thursday'), request.args.get('friday'),
+                                    request.args.get('saturday')])
 
 app.run(port=8000, host="0.0.0.0")
