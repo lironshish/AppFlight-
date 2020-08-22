@@ -19,13 +19,13 @@ public class NatbagMain {
 			FlightSystem.searchOutFlightByCompany(args[6]);
 			if (isHtml)
 				System.out.println("<br>");
-			FlightSystem.searchOutFlightByDate(3, Integer.parseInt(args[7]));
+			FlightSystem.helpMethod(args[7], 3, false);
 			if (isHtml)
 				System.out.println("<br>");
-			FlightSystem.searchOutFlightByDate(2, Integer.parseInt(args[8]));
+			FlightSystem.helpMethod(args[8], 2, false);
 			if (isHtml)
 				System.out.println("<br>");
-			FlightSystem.searchOutFlightByDate(1, Integer.parseInt(args[9]));
+			FlightSystem.helpMethod(args[9], 1, false);
 			if (isHtml)
 				System.out.println("<br>");
 
@@ -42,13 +42,13 @@ public class NatbagMain {
 			FlightSystem.searchInFlightByCompany(args[6]);
 			if (isHtml)
 				System.out.println("<br>");
-			FlightSystem.searchInFlightByDate(3, Integer.parseInt(args[7]));
+			FlightSystem.helpMethod(args[7], 3, true);
 			if (isHtml)
 				System.out.println("<br>");
-			FlightSystem.searchInFlightByDate(2, Integer.parseInt(args[8]));
+			FlightSystem.helpMethod(args[8], 3, true);
 			if (isHtml)
 				System.out.println("<br>");
-			FlightSystem.searchInFlightByDate(1, Integer.parseInt(args[9]));
+			FlightSystem.helpMethod(args[9], 3, true);
 			if (isHtml)
 				System.out.println("<br>");
 		}

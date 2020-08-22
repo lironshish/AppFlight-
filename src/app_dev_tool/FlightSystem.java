@@ -513,4 +513,15 @@ public class FlightSystem {
 		}
 		pw.close();
 	}
+
+	public static void helpMethod(String s, int choose, boolean kindFlight) {
+		int temp;
+		temp = Integer.parseInt(s);
+		if (kindFlight == true) {
+			searchInFlightByDate(choose, temp);
+		} else if (kindFlight == false) {
+			searchOutFlightByDate(choose, temp);
+		}
+
+	}
 }
