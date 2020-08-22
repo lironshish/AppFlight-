@@ -66,7 +66,8 @@ public class Program {
 				case 2: // Flight number
 					System.out.println("please enter the flight number to search");
 					String flightNumber = scan.next();
-					FlightSystem.searchByFlightNumber(flightNumber);
+					FlightSystem.searchInFlightByFlightNumber(flightNumber);
+					FlightSystem.searchOutFlightByFlightNumber(flightNumber);
 					break;
 				case 3: // City flight
 					System.out.println("plesae enter city to search");

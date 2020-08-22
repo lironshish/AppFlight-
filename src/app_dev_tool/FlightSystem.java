@@ -438,23 +438,36 @@ public class FlightSystem {
 
 	}
 
-	public static void searchByFlightNumber(String flightNumber) { // by flight number
+	public static String searchInFlightByFlightNumber(String flightNumber) { // In flight by flight number
 		int count = 0;
+		String searchEnd = "";
 		for (int i = 0; i < allInFlights.size(); i++) {
 			if (allInFlights.get(i).getFlightNum().equalsIgnoreCase(flightNumber)) {
 				System.out.println(allInFlights.get(i));
 				count++;
-			}
-		}
-		for (int i = 0; i < allOutFlights.size(); i++) {
-			if (allOutFlights.get(i).getFlightNum().equalsIgnoreCase(flightNumber)) {
-				System.out.println(allOutFlights.get(i));
-				count++;
+				searchEnd += allOutFlights.get(i) + "/n";
 			}
 		}
 		if (count == 0) {
 			System.out.println("the parameter that you wanted to search does not exist\n");
 		}
+		return searchEnd;
+	}
+
+	public static String searchOutFlightByFlightNumber(String flightNumber) { // Out flight by flight number
+		int count = 0;
+		String searchEnd = "";
+		for (int i = 0; i < allOutFlights.size(); i++) {
+			if (allOutFlights.get(i).getFlightNum().equalsIgnoreCase(flightNumber)) {
+				System.out.println(allOutFlights.get(i));
+				count++;
+				searchEnd += allOutFlights.get(i) + "/n";
+			}
+		}
+		if (count == 0) {
+			System.out.println("the parameter that you wanted to search does not exist\n");
+		}
+		return searchEnd;
 	}
 
 	// Loading in flight information from a file

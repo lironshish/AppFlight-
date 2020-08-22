@@ -13,7 +13,7 @@ public class NatbagMain {
 			FlightSystem.searchOutFlightByCity(args[4]);
 			if (isHtml)
 				System.out.println("<br>");
-			FlightSystem.searchOutFlightByTerminalNumber(Integer.parseInt(args[5]));
+			FlightSystem.searchOutFlightByFlightNumber(args[5]);
 			if (isHtml)
 				System.out.println("<br>");
 			FlightSystem.searchOutFlightByCompany(args[6]);
@@ -36,7 +36,7 @@ public class NatbagMain {
 			FlightSystem.searchInFlightByCity(args[4]);
 			if (isHtml)
 				System.out.println("<br>");
-			FlightSystem.searchInFlightByTerminalNumber(Integer.parseInt(args[5]));
+			FlightSystem.searchInFlightByFlightNumber(args[5]);
 			if (isHtml)
 				System.out.println("<br>");
 			FlightSystem.searchInFlightByCompany(args[6]);
