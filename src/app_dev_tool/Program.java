@@ -84,7 +84,9 @@ public class Program {
 
 					System.out.println("please enter the parameter");
 					int temp = scan.nextInt();
-					String searchResult = FlightSystem.searchFlightByDate(SearchChooseDate, temp);
+					String searchResult = FlightSystem.searchInFlightByDate(SearchChooseDate, temp);
+					System.out.println(searchResult);
+					searchResult = FlightSystem.searchOutFlightByDate(SearchChooseDate, temp);
 					System.out.println(searchResult);
 					break;
 				case 5: // Country flight

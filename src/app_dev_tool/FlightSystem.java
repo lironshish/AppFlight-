@@ -248,17 +248,12 @@ public class FlightSystem {
 
 // Searchers flight by parameters	
 
-	public static String searchFlightByDate(int choose, int temp) { // by date
+	public static String searchInFlightByDate(int choose, int temp) { // In flight by date
 		String allFlightsInDate = " ";
 		if (choose == 1) {
 			for (int i = 0; i < allInFlights.size(); i++) {
 				if (allInFlights.get(i).getYear() == temp) {
 					allFlightsInDate += allInFlights.get(i) + "\n";
-				}
-			}
-			for (int j = 0; j < allOutFlights.size(); j++) {
-				if (allOutFlights.get(j).getYear() == temp) {
-					allFlightsInDate += allOutFlights.get(j) + "\n";
 				}
 			}
 			return allFlightsInDate;
@@ -268,32 +263,45 @@ public class FlightSystem {
 					allFlightsInDate += allInFlights.get(i) + "\n";
 				}
 			}
-			for (int j = 0; j < allOutFlights.size(); j++) {
-				if (allOutFlights.get(j).getMonth() == temp) {
-					allFlightsInDate += allOutFlights.get(j) + "\n";
-				}
-			}
-
 			return allFlightsInDate;
-		}
-
-		else if (choose == 3) {
-			for (
-
-					int i = 0; i < allInFlights.size(); i++) {
+		} else if (choose == 3) {
+			for (int i = 0; i < allInFlights.size(); i++) {
 				if (allInFlights.get(i).getDay() == temp) {
 					allFlightsInDate += allInFlights.get(i) + "\n";
 				}
 			}
-			for (int j = 0; j < allOutFlights.size(); j++) {
-				if (allOutFlights.get(j).getDay() == temp) {
-					allFlightsInDate += allOutFlights.get(j) + "\n";
-				}
-			}
-
 			return allFlightsInDate;
 		} else
 			return allFlightsInDate;
+
+	}
+
+	public static String searchOutFlightByDate(int choose, int temp) { // Out flight by date
+		String allFlightsInDate = " ";
+		if (choose == 1) {
+			for (int i = 0; i < allOutFlights.size(); i++) {
+				if (allOutFlights.get(i).getYear() == temp) {
+					allFlightsInDate += allOutFlights.get(i) + "\n";
+				}
+			}
+			return allFlightsInDate;
+		} else if (choose == 2) {
+			for (int i = 0; i < allOutFlights.size(); i++) {
+				if (allOutFlights.get(i).getMonth() == temp) {
+					allFlightsInDate += allOutFlights.get(i) + "\n";
+				}
+			}
+			return allFlightsInDate;
+		} else if (choose == 3) {
+			for (int i = 0; i < allOutFlights.size(); i++) {
+				if (allOutFlights.get(i).getDay() == temp) {
+					allFlightsInDate += allOutFlights.get(i) + "\n";
+				}
+			}
+			return allFlightsInDate;
+		} else
+			return allFlightsInDate;
+
 	}
 
 	public static String searchInFlightByCompany(String comp) { // In flight by company
