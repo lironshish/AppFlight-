@@ -296,7 +296,7 @@ public class FlightSystem {
 			return allFlightsInDate;
 	}
 
-	public static String searchByCompany(String comp) { // by company
+	public static String searchInFlightByCompany(String comp) { // In flight by company
 		int count = 0;
 		String searchEnd = "";
 		for (int i = 0; i < allInFlights.size(); i++) {
@@ -306,6 +306,15 @@ public class FlightSystem {
 				searchEnd += allInFlights.get(i) + "\n";
 			}
 		}
+		if (count == 0) {
+			System.out.println("the parameter that you wanted to search does not exist\n");
+		}
+		return searchEnd;
+	}
+
+	public static String searchOutFlightByCompany(String comp) { // Out flight by company
+		int count = 0;
+		String searchEnd = "";
 		for (int i = 0; i < allOutFlights.size(); i++) {
 			if (allOutFlights.get(i).getCompany().equalsIgnoreCase(comp)) {
 				System.out.println(allOutFlights.get(i));
@@ -313,49 +322,67 @@ public class FlightSystem {
 				searchEnd += allOutFlights.get(i) + "\n";
 			}
 		}
-
 		if (count == 0) {
 			System.out.println("the parameter that you wanted to search does not exist\n");
 		}
 		return searchEnd;
 	}
 
-	public static String searchByCity(String des) {
+	public static String searchOutFlightByCity(String city) { // Out flight by city
 		int count = 0;
 		String searchEnd = "";
-		for (int i = 0; i < allInFlights.size(); i++) {
-			if (allInFlights.get(i).getCity().equalsIgnoreCase(des)) {
-				System.out.println(allInFlights.get(i));
-				count++;
-				searchEnd += allInFlights.get(i) + "\n";
-			}
-		}
 		for (int i = 0; i < allOutFlights.size(); i++) {
-			if (allOutFlights.get(i).getCity().equalsIgnoreCase(des)) {
+			if (allOutFlights.get(i).getCity().equalsIgnoreCase(city)) {
 				System.out.println(allOutFlights.get(i));
 				count++;
 				searchEnd += allOutFlights.get(i) + "\n";
 			}
 		}
+		if (count == 0) {
+			System.out.println("the parameter that you wanted to search does not exist\n");
+		}
+		return searchEnd;
 
+	}
+
+	public static String searchInFlightByCity(String city) { // In flight by city
+		int count = 0;
+		String searchEnd = "";
+		for (int i = 0; i < allInFlights.size(); i++) {
+			if (allInFlights.get(i).getCity().equalsIgnoreCase(city)) {
+				System.out.println(allInFlights.get(i));
+				count++;
+				searchEnd += allInFlights.get(i) + "\n";
+			}
+		}
+		if (count == 0) {
+			System.out.println("the parameter that you wanted to search does not exist\n");
+		}
+		return searchEnd;
+
+	}
+
+	public static String searchInFlightByCountry(String country) { // In flight by country
+		int count = 0;
+		String searchEnd = "";
+		for (int i = 0; i < allInFlights.size(); i++) {
+			if (allInFlights.get(i).getCountry().equalsIgnoreCase(country)) {
+				System.out.println(allInFlights.get(i));
+				count++;
+				searchEnd += allInFlights.get(i) + "/n";
+			}
+		}
 		if (count == 0) {
 			System.out.println("the parameter that you wanted to search does not exist\n");
 		}
 		return searchEnd;
 	}
 
-	public static String searchByCountry(String des) { // by country
+	public static String searchOutFlightByCountry(String country) { // Out flight by country
 		int count = 0;
 		String searchEnd = "";
-		for (int i = 0; i < allInFlights.size(); i++) {
-			if (allInFlights.get(i).getCountry().equalsIgnoreCase(des)) {
-				System.out.println(allInFlights.get(i));
-				count++;
-				searchEnd += allInFlights.get(i) + "/n";
-			}
-		}
 		for (int i = 0; i < allOutFlights.size(); i++) {
-			if (allOutFlights.get(i).getCountry().equalsIgnoreCase(des)) {
+			if (allOutFlights.get(i).getCountry().equalsIgnoreCase(country)) {
 				System.out.println(allOutFlights.get(i));
 				count++;
 				searchEnd += allOutFlights.get(i) + "/n";
@@ -366,6 +393,41 @@ public class FlightSystem {
 			System.out.println("the parameter that you wanted to search does not exist\n");
 		}
 		return searchEnd;
+
+	}
+
+	public static String searchInFlightByTerminalNumber(int terminalNumber) { // In flight by terminal number
+		int count = 0;
+		String searchEnd = "";
+		for (int i = 0; i < allInFlights.size(); i++) {
+			if (allInFlights.get(i).getTerminalNum() == terminalNumber) {
+				System.out.println(allInFlights.get(i));
+				count++;
+				searchEnd += allOutFlights.get(i) + "/n";
+			}
+		}
+		if (count == 0) {
+			System.out.println("the parameter that you wanted to search does not exist\n");
+		}
+		return searchEnd;
+
+	}
+
+	public static String searchOutFlightByTerminalNumber(int terminalNumber) { // Out flight by terminal number
+		int count = 0;
+		String searchEnd = "";
+		for (int i = 0; i < allOutFlights.size(); i++) {
+			if (allOutFlights.get(i).getTerminalNum() == terminalNumber) {
+				System.out.println(allOutFlights.get(i));
+				count++;
+				searchEnd += allOutFlights.get(i) + "/n";
+			}
+		}
+		if (count == 0) {
+			System.out.println("the parameter that you wanted to search does not exist\n");
+		}
+		return searchEnd;
+
 	}
 
 	public static void searchByFlightNumber(String flightNumber) { // by flight number
@@ -378,25 +440,6 @@ public class FlightSystem {
 		}
 		for (int i = 0; i < allOutFlights.size(); i++) {
 			if (allOutFlights.get(i).getFlightNum().equalsIgnoreCase(flightNumber)) {
-				System.out.println(allOutFlights.get(i));
-				count++;
-			}
-		}
-		if (count == 0) {
-			System.out.println("the parameter that you wanted to search does not exist\n");
-		}
-	}
-
-	public static void serachFlightByTerminalNumber(int terminalNumber) {
-		int count = 0;
-		for (int i = 0; i < allInFlights.size(); i++) {
-			if (allInFlights.get(i).getTerminalNum() == terminalNumber) {
-				System.out.println(allInFlights.get(i));
-				count++;
-			}
-		}
-		for (int i = 0; i < allOutFlights.size(); i++) {
-			if (allOutFlights.get(i).getTerminalNum() == terminalNumber) {
 				System.out.println(allOutFlights.get(i));
 				count++;
 			}

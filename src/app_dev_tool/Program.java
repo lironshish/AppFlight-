@@ -60,7 +60,8 @@ public class Program {
 				case 1: // Terminal number
 					System.out.println("please enter the terminal number that you like to search");
 					int terminalNumber = scan.nextInt();
-					FlightSystem.serachFlightByTerminalNumber(terminalNumber);
+					FlightSystem.searchInFlightByTerminalNumber(terminalNumber);
+					FlightSystem.searchOutFlightByTerminalNumber(terminalNumber);
 					break;
 				case 2: // Flight number
 					System.out.println("please enter the flight number to search");
@@ -70,7 +71,8 @@ public class Program {
 				case 3: // City flight
 					System.out.println("plesae enter city to search");
 					String city = scan.next();
-					FlightSystem.searchByCity(city);
+					FlightSystem.searchInFlightByCity(city);
+					FlightSystem.searchOutFlightByCity(city);
 					break;
 				case 4: // Date flight
 					int SearchChooseDate = 0;
@@ -88,12 +90,14 @@ public class Program {
 				case 5: // Country flight
 					System.out.println("plesae enter country to search");
 					String country = scan.next();
-					FlightSystem.searchByCountry(country);
+					FlightSystem.searchOutFlightByCountry(country);
+					FlightSystem.searchInFlightByCountry(country);
 					break;
 				case 6: // Company flight
 					System.out.println("please enter the company of flights to search");
 					String company = scan.next();
-					FlightSystem.searchByCompany(company);
+					FlightSystem.searchInFlightByCompany(company);
+					FlightSystem.searchOutFlightByCompany(company);
 				}
 			}
 		} while (choise != 0);

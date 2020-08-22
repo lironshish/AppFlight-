@@ -196,7 +196,7 @@ public class Flight {
 		return "Company: " + company + ". Destination: " + city + ". Date: " + day + "/" + month + "/" + year
 				+ ". Departure time: " + hourFly + ":" + minutesFly + ". Flight Number: " + flightNum + "\n "
 				+ ". Terminal " + terminalNum + " the vacation will take place in " + Country + " and will be for "
-				+ daysOfVacation + " days , which make the " + "returning date to be" + dayReturn + "/" + monthReturn
+				+ daysOfVacation + " days , which make the " + "returning date to be " + dayReturn + "/" + monthReturn
 				+ "/" + yearReturn;
 	}
 

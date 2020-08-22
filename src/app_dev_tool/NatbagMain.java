@@ -5,59 +5,51 @@ public class NatbagMain {
 	public static void main(String[] args) {
 		boolean isHtml = args.length > 0 && args[0].equalsIgnoreCase("html");
 		boolean isDepartures = args.length > 1 && args[1].equalsIgnoreCase("departures");
-		int terminalNumTemp, yearTemp, monthTemp, dayTemp;
 		FlightSystem.createHardCoded();
 		if (isDepartures) {
-			FlightSystem.searchByCountry(args[3]);
+			FlightSystem.searchOutFlightByCountry(args[3]);
 			if (isHtml)
 				System.out.println("<br>");
-			FlightSystem.searchByCity(args[4]);
+			FlightSystem.searchOutFlightByCity(args[4]);
 			if (isHtml)
 				System.out.println("<br>");
-			terminalNumTemp = Integer.parseInt(args[5]);
-			FlightSystem.serachFlightByTerminalNumber(terminalNumTemp);
+			FlightSystem.searchOutFlightByTerminalNumber(Integer.parseInt(args[5]));
 			if (isHtml)
 				System.out.println("<br>");
-			FlightSystem.searchByCompany(args[6]);
-			if (isHtml)
-				System.out.println("<br>");
-			dayTemp = Integer.parseInt(args[7]);
-			FlightSystem.searchFlightByDate(3, dayTemp);
-			if (isHtml)
-				System.out.println("<br>");
-			monthTemp = Integer.parseInt(args[8]);
-			FlightSystem.searchFlightByDate(2, monthTemp);
-			if (isHtml)
-				System.out.println("<br>");
-			yearTemp = Integer.parseInt(args[9]);
-			FlightSystem.searchFlightByDate(1, yearTemp);
+			FlightSystem.searchOutFlightByCompany(args[6]);
 			if (isHtml)
 				System.out.println("<br>");
 
-		} else { 
-			FlightSystem.searchByCountry(args[3]);
+			FlightSystem.searchFlightByDate(3, Integer.parseInt(args[7]));
 			if (isHtml)
 				System.out.println("<br>");
-			FlightSystem.searchByCity(args[4]);
+			FlightSystem.searchFlightByDate(2, Integer.parseInt(args[8]));
 			if (isHtml)
 				System.out.println("<br>");
-			terminalNumTemp = Integer.parseInt(args[5]);
-			FlightSystem.serachFlightByTerminalNumber(terminalNumTemp);
+			FlightSystem.searchFlightByDate(1, Integer.parseInt(args[9]));
 			if (isHtml)
 				System.out.println("<br>");
-			FlightSystem.searchByCompany(args[6]);
+
+		} else {
+			FlightSystem.searchInFlightByCountry(args[3]);
 			if (isHtml)
 				System.out.println("<br>");
-			dayTemp = Integer.parseInt(args[7]);
-			FlightSystem.searchFlightByDate(3, dayTemp);
+			FlightSystem.searchInFlightByCity(args[4]);
 			if (isHtml)
 				System.out.println("<br>");
-			monthTemp = Integer.parseInt(args[8]);
-			FlightSystem.searchFlightByDate(2, monthTemp);
+			FlightSystem.searchInFlightByTerminalNumber(Integer.parseInt(args[5]));
 			if (isHtml)
 				System.out.println("<br>");
-			yearTemp = Integer.parseInt(args[9]);
-			FlightSystem.searchFlightByDate(1, yearTemp);
+			FlightSystem.searchInFlightByCompany(args[6]);
+			if (isHtml)
+				System.out.println("<br>");
+			FlightSystem.searchFlightByDate(3, Integer.parseInt(args[7]));
+			if (isHtml)
+				System.out.println("<br>");
+			FlightSystem.searchFlightByDate(2, Integer.parseInt(args[8]));
+			if (isHtml)
+				System.out.println("<br>");
+			FlightSystem.searchFlightByDate(1, Integer.parseInt(args[9]));
 			if (isHtml)
 				System.out.println("<br>");
 		}
@@ -65,6 +57,3 @@ public class NatbagMain {
 	}
 
 }
-
-
-//http://localhost:8000/departures?outformat=html&country=france&city=paris&airport=CDG&airline=elal&day1=4&month1=6&year1=2020&day2=31&month2=7&year2=2020&sunday=true&monday
