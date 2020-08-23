@@ -250,23 +250,25 @@ public class FlightSystem {
 
 	public static String searchInFlightByDate(int choose, int temp) { // In flight by date
 		String allFlightsInDate = " ";
+		
+		String temp1=Integer.toString(temp);
 		if (choose == 1) {
 			for (int i = 0; i < allInFlights.size(); i++) {
-				if (allInFlights.get(i).getYear() == temp) {
+				if (Integer.toString(allInFlights.get(i).getYear()) == temp1) {
 					allFlightsInDate += allInFlights.get(i) + "\n";
 				}
 			}
 			return allFlightsInDate;
 		} else if (choose == 2) {
 			for (int i = 0; i < allInFlights.size(); i++) {
-				if (allInFlights.get(i).getMonth() == temp) {
+				if (Integer.toString(allInFlights.get(i).getMonth()) == temp1) {
 					allFlightsInDate += allInFlights.get(i) + "\n";
 				}
 			}
 			return allFlightsInDate;
 		} else if (choose == 3) {
 			for (int i = 0; i < allInFlights.size(); i++) {
-				if (allInFlights.get(i).getDay() == temp) {
+				if (Integer.toString(allInFlights.get(i).getDay()) == temp1) {
 					allFlightsInDate += allInFlights.get(i) + "\n";
 				}
 			}
