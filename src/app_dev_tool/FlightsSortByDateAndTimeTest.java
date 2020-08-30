@@ -10,8 +10,8 @@ public class FlightsSortByDateAndTimeTest {
 	public void SortInFlightTest() {
 		ArrayList<InFlight> inFlightsForTest = new ArrayList<>();
 
-		InFlight inFlight1 = new InFlight("rio de jeneiro", "el al", 2020, 7, 15, 10, 15, "LY415", 1, "Brazil", 9);
-		InFlight inFlight2 = new InFlight("shengai", "el al", 2020, 4, 12, 12, 00, "LY317", 3, "China", 11);
+		InFlight inFlight1 = new InFlight("rio de jeneiro", "elal", 2020, 7, 15, 10, 15, "LY415", 1, "Brazil", 9);
+		InFlight inFlight2 = new InFlight("shengai", "elal", 2020, 4, 12, 12, 00, "LY317", 3, "China", 11);
 
 		inFlightsForTest.add(inFlight1);
 		inFlightsForTest.add(inFlight2);

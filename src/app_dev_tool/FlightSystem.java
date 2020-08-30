@@ -16,10 +16,10 @@ public class FlightSystem {
 
 	public static void createHardCoded() {
 		// Creating flights
-		OutFlight outFlight1 = new OutFlight("London", "el al", 2020, 5, 20, 10, 10, "LY315", 3, "England", 22);
-		OutFlight outFlight2 = new OutFlight("New York", "el al", 2020, 5, 20, 00, 45, "LY3001", 3, "USA", 15);
-		InFlight inFlight1 = new InFlight("rio de jeneiro", "el al", 2020, 7, 15, 10, 15, "LY415", 1, "Brazil", 9);
-		InFlight inFlight2 = new InFlight("shengai", "el al", 2020, 4, 12, 12, 00, "LY317", 3, "China", 11);
+		OutFlight outFlight1 = new OutFlight("London", "elal", 2020, 5, 20, 10, 10, "LY315", 3, "England", 22);
+		OutFlight outFlight2 = new OutFlight("New York", "elal", 2020, 5, 20, 00, 45, "LY3001", 3, "USA", 15);
+		InFlight inFlight1 = new InFlight("rio de jeneiro", "elal", 2020, 7, 15, 10, 15, "LY415", 1, "Brazil", 9);
+		InFlight inFlight2 = new InFlight("shengai", "elal", 2020, 4, 12, 12, 00, "LY317", 3, "China", 11);
 
 		allOutFlights.add(outFlight1);
 		allOutFlights.add(outFlight2);
@@ -248,27 +248,45 @@ public class FlightSystem {
 
 // Searchers flight by parameters	
 
-	public static String searchInFlightByDate(int choose, int temp) { // In flight by date
+	public static String searchInFlightByDate(int choose, int temp, boolean html) { // In flight by date
 		String allFlightsInDate = " ";
 		if (choose == 1) {
 			for (int i = 0; i < allInFlights.size(); i++) {
 				if (allInFlights.get(i).getYear() == temp) {
-					allFlightsInDate += allInFlights.get(i) + "\n";
+					System.out.println(allInFlights.get(i).toString());
+					if (html == true) {
+						System.out.println("<br>");
+					}
 				}
+			}
+			if (allFlightsInDate == " ") {
+				System.out.println("the parameter that you wanted to search does not exist\n");
 			}
 			return allFlightsInDate;
 		} else if (choose == 2) {
 			for (int i = 0; i < allInFlights.size(); i++) {
 				if (allInFlights.get(i).getMonth() == temp) {
-					allFlightsInDate += allInFlights.get(i) + "\n";
+					System.out.println(allInFlights.get(i).toString());
+					if (html == true) {
+						System.out.println("<br>");
+					}
 				}
+			}
+			if (allFlightsInDate == " ") {
+				System.out.println("the parameter that you wanted to search does not exist\n");
 			}
 			return allFlightsInDate;
 		} else if (choose == 3) {
 			for (int i = 0; i < allInFlights.size(); i++) {
 				if (allInFlights.get(i).getDay() == temp) {
-					allFlightsInDate += allInFlights.get(i) + "\n";
+					System.out.println(allInFlights.get(i).toString());
+					if (html == true) {
+						System.out.println("<br>");
+					}
 				}
+			}
+			if (allFlightsInDate == " ") {
+				System.out.println("the parameter that you wanted to search does not exist\n");
 			}
 			return allFlightsInDate;
 		} else
@@ -276,27 +294,45 @@ public class FlightSystem {
 
 	}
 
-	public static String searchOutFlightByDate(int choose, int temp) { // Out flight by date
+	public static String searchOutFlightByDate(int choose, int temp, boolean html) { // Out flight by date
 		String allFlightsInDate = " ";
 		if (choose == 1) {
 			for (int i = 0; i < allOutFlights.size(); i++) {
 				if (allOutFlights.get(i).getYear() == temp) {
-					allFlightsInDate += allOutFlights.get(i) + "\n";
+					System.out.println(allOutFlights.get(i).toString());
+					if (html == true) {
+						System.out.println("<br>");
+					}
 				}
+			}
+			if (allFlightsInDate == " ") {
+				System.out.println("the parameter that you wanted to search does not exist\n");
 			}
 			return allFlightsInDate;
 		} else if (choose == 2) {
 			for (int i = 0; i < allOutFlights.size(); i++) {
 				if (allOutFlights.get(i).getMonth() == temp) {
-					allFlightsInDate += allOutFlights.get(i) + "\n";
+					System.out.println(allOutFlights.get(i).toString());
+					if (html == true) {
+						System.out.println("<br>");
+					}
 				}
+			}
+			if (allFlightsInDate == " ") {
+				System.out.println("the parameter that you wanted to search does not exist\n");
 			}
 			return allFlightsInDate;
 		} else if (choose == 3) {
 			for (int i = 0; i < allOutFlights.size(); i++) {
 				if (allOutFlights.get(i).getDay() == temp) {
-					allFlightsInDate += allOutFlights.get(i) + "\n";
+					System.out.println(allOutFlights.get(i).toString());
+					if (html == true) {
+						System.out.println("<br>");
+					}
 				}
+			}
+			if (allFlightsInDate == " ") {
+				System.out.println("the parameter that you wanted to search does not exist\n");
 			}
 			return allFlightsInDate;
 		} else
@@ -304,12 +340,15 @@ public class FlightSystem {
 
 	}
 
-	public static String searchInFlightByCompany(String comp) { // In flight by company
+	public static String searchInFlightByCompany(String airline, boolean html) { // In flight by company
 		int count = 0;
 		String searchEnd = "";
 		for (int i = 0; i < allInFlights.size(); i++) {
-			if (allInFlights.get(i).getCompany().equalsIgnoreCase(comp)) {
+			if (allInFlights.get(i).getCompany().equalsIgnoreCase(airline)) {
 				System.out.println(allInFlights.get(i));
+				if (html == true) {
+					System.out.println("<br>");
+				}
 				count++;
 				searchEnd += allInFlights.get(i) + "\n";
 			}
@@ -320,12 +359,15 @@ public class FlightSystem {
 		return searchEnd;
 	}
 
-	public static String searchOutFlightByCompany(String comp) { // Out flight by company
+	public static String searchOutFlightByCompany(String airline, boolean html) { // Out flight by company
 		int count = 0;
 		String searchEnd = "";
 		for (int i = 0; i < allOutFlights.size(); i++) {
-			if (allOutFlights.get(i).getCompany().equalsIgnoreCase(comp)) {
+			if (allOutFlights.get(i).getCompany().equals(airline)) {
 				System.out.println(allOutFlights.get(i));
+				if (html == true) {
+					System.out.println("<br>");
+				}
 				count++;
 				searchEnd += allOutFlights.get(i) + "\n";
 			}
@@ -514,14 +556,4 @@ public class FlightSystem {
 		pw.close();
 	}
 
-	public static void helpMethod(String s, int choose, boolean kindFlight) {
-		int temp;
-		temp = Integer.parseInt(s);
-		if (kindFlight == true) {
-			searchInFlightByDate(choose, temp);
-		} else if (kindFlight == false) {
-			searchOutFlightByDate(choose, temp);
-		}
-
-	}
 }

@@ -85,9 +85,9 @@ public class Program {
 
 					System.out.println("please enter the parameter");
 					int temp = scan.nextInt();
-					String searchResult = FlightSystem.searchInFlightByDate(SearchChooseDate, temp);
+					String searchResult = FlightSystem.searchInFlightByDate(SearchChooseDate, temp, false);
 					System.out.println(searchResult);
-					searchResult = FlightSystem.searchOutFlightByDate(SearchChooseDate, temp);
+					searchResult = FlightSystem.searchOutFlightByDate(SearchChooseDate, temp, false);
 					System.out.println(searchResult);
 					break;
 				case 5: // Country flight
@@ -99,8 +99,8 @@ public class Program {
 				case 6: // Company flight
 					System.out.println("please enter the company of flights to search");
 					String company = scan.next();
-					FlightSystem.searchInFlightByCompany(company);
-					FlightSystem.searchOutFlightByCompany(company);
+					FlightSystem.searchInFlightByCompany(company, false);
+					FlightSystem.searchOutFlightByCompany(company, false);
 				}
 			}
 		} while (choise != 0);
